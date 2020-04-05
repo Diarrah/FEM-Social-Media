@@ -214,7 +214,11 @@ h3 { font-size: 2em; }
     }
 
     .main__card, 
-    .small__card {
-        margin-bottom: 30px;
-    }
+    .small__card { margin-bottom: 30px; }
+    .main__card:last-of-type { margin-bottom: 0; }
+}
+
+@media screen and (max-width: 425px) {
+    .universal_padding { padding: 0 20px; }
+    .small__card { margin-bottom: 15px; }
 }
