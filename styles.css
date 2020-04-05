@@ -15,13 +15,15 @@
     padding: 0;
 }
 
+body { overflow-x: hidden; }
 body::after {
     content: '';
+    background-color: var(--light-grayish-blue);
     position: absolute;
     z-index: -1;
     top: 0; bottom: 0; left: 0; right: 0;
-    height: 230px; width: calc(100vw - 20px);
-    background-color: var(--very-pale-blue);
+    height: 230px; width: 100vw;
+    margin: 0 auto;
     opacity: 0.9;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -32,27 +34,25 @@ html {
     font-size: 14px;
 }
 
-h1 { color: var(--dark-grayish-blue); }
+h1 { 
+    font-size: 26px;
+    color: var(--dark-grayish-blue); }
 
 .positive { color: var(--lime-green); }
 .negative { color: var(--bright-red); }
 .universal_padding { padding: 0 50px; }
 
 /* Navbar */
+.toggler { margin: auto 0; }
 .navbar {
     display: flex;
     justify-content: space-between;
-    color:hsl(230, 22%, 74%);
+    color:var(--dark-grayish-blue);
     font-weight: 700;
     margin: 40px 0;
 }
 
-.navbar h1 {
-    color: black;
-    font-size: 26px;
-}
-
-.navbar small { color: var(--dark-grayish-blue); }
+.navbar h1 { color: #000; }
 
 /* Toggle Switch */
 .dark-mode-label input { opacity: 0; }
@@ -61,7 +61,7 @@ h1 { color: var(--dark-grayish-blue); }
     top: -4px;
     margin-left: 10px;
     display: inline-block;
-    height: 24px; width: 50px;
+    height: 25px; width: 50px;
     border: none;
     border-radius: 100px;
     background-color: hsl(230, 22%, 74%);
@@ -78,14 +78,14 @@ h1 { color: var(--dark-grayish-blue); }
 .slider::before {
     content: '';
     position: absolute;
-    left: 2px; top: 2px;
-    height: 20px; width: 20px;
+    left: 3px; top: 2.5px;
+    height: 19px; width: 19px;
     border-radius: 50%;
     background-color: #fff;
     transition: 0.4s;
 }
 
-.dark-mode-label input:checked + .slider::before { left: 28px; }
+.dark-mode-label input:checked + .slider::before { left: 27px; }
 
 /* Main Cards */
 .main__card__container {
@@ -177,3 +177,44 @@ h2 {
     font-weight: 700; }
 
 h3 { font-size: 2em; }
+
+/* ------- MQs ------- */
+
+/* Small Laptops & Tablets */
+@media screen and (max-width: 912px) {
+    .universal_padding { padding: 0 40px; }
+    h1 { font-size: 24px; }
+    h2 { font-size: 3em; }
+    h3 { font-size: 1.5em; }
+    .main__card p { 
+        font-size: 12px;
+        letter-spacing: 2px; }
+    .small__card__inner p { font-size: 12px; }
+}
+
+/* Phones */
+@media screen and (max-width: 745px) {
+    h2 {  font-size: 4em; }
+    .main__card p { letter-spacing: 4px; }
+
+    .toggler {
+        margin-top: 20px;
+        padding-top: 30px;
+        border-top: 0.9px solid #000;
+        display: flex; 
+        justify-content: space-between;
+    }
+
+  
+    .navbar,
+    .main__card__container,
+    .small__card__container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .main__card, 
+    .small__card {
+        margin-bottom: 30px;
+    }
+}
