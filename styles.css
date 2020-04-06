@@ -3,10 +3,44 @@
 :root {
     --lime-green: hsl(163, 72%, 41%);
     --bright-red: hsl(356, 69%, 56%);
-    --light-grayish-blue: hsl(227, 47%, 96%);
+    /* Dark Theme */
+    --very-dark-blue: hsl(230, 17%, 14%);
+    --dark-blue: hsl(232, 19%, 15%);
+    --dark-desaturated-blue: hsl(228, 28%, 20%);
+    --desaturated-blue: hsl(228, 34%, 66%);
+    --white: hsl(0, 0%, 100%);
+    --gradient: linear-gradient(to right, hsl(210, 78%, 56%), hsl(146, 68%, 55%));
+    --lighten: brightness(1.2);
+    /* Light Theme */
     --very-pale-blue: hsl(225, 100%, 98%);
+    --light-grayish-blue: hsl(227, 47%, 96%);
     --dark-grayish-blue: hsl(228, 12%, 44%);
-    --dark-toggle: linear-gradient(hsl(210, 78%, 56%), hsl(146, 68%, 55%));
+    --medium-gray: hsl(230, 22%, 74%);
+    --darken: brightness(0.96);
+}
+
+.light {
+    --bg: var(--white);
+    --top-bg-pattern: var(--light-grayish-blue);
+    --card-bg: var(--very-pale-blue);
+    --text: var(--dark-grayish-blue);
+    --data-numbers: var(--very-dark-blue);
+    --toggle: var(--medium-gray);
+    --toggle-hover: var(--gradient);
+    --overview: var(--dark-grayish-blue);
+    --hover: var(--darken);
+}
+
+.dark { 
+    --bg: var(--very-dark-blue);
+    --top-bg-pattern: var(--dark-blue);
+    --card-bg: var(--dark-desaturated-blue);
+    --text: var(--desaturated-blue);
+    --data-numbers: var(--white);
+    --toggle: var(--gradient);
+    --toggle-hover: var(--medium-gray);
+    --overview: var(--white);
+    --hover: var(--lighten);
 }
 
 * {
@@ -15,10 +49,12 @@
     padding: 0;
 }
 
-body { overflow-x: hidden; }
+body { 
+    background-color: var(--bg);
+    overflow-x: hidden; }
 body::after {
     content: '';
-    background-color: var(--light-grayish-blue);
+    background-color: var(--top-bg-pattern);
     position: absolute;
     z-index: -1;
     top: 0; bottom: 0; left: 0; right: 0;
@@ -36,7 +72,17 @@ html {
 
 h1 { 
     font-size: 26px;
-    color: var(--dark-grayish-blue); }
+    color: var(--data-numbers);
+}
+
+.overview { color: var(--overview); }
+
+h2 {
+    margin-top: 25px;
+    font-size: 4em;
+}
+
+h2, h3 { color: var(--data-numbers); }
 
 .positive { color: var(--lime-green); }
 .negative { color: var(--bright-red); }
@@ -47,12 +93,10 @@ h1 {
 .navbar {
     display: flex;
     justify-content: space-between;
-    color:var(--dark-grayish-blue);
+    color: var(--dark-grayish-blue);
     font-weight: 700;
     margin: 40px 0;
 }
-
-.navbar h1 { color: #000; }
 
 /* Toggle Switch */
 .dark-mode-label input { opacity: 0; }
@@ -64,10 +108,13 @@ h1 {
     height: 25px; width: 50px;
     border: none;
     border-radius: 100px;
-    background-color: hsl(230, 22%, 74%);
+    background-color: var(--toggle);
+    background: var(--toggle);
 }
 
-.dark-mode-label:hover { background: linear-gradient(to right, hsl(210, 78%, 56%), hsl(146, 68%, 55%)); }
+.dark-mode-label:hover { 
+    background: var(--toggle-hover);
+    background-color: var(--toggle-hover); }
 
 .slider {
     position: absolute;
@@ -81,7 +128,7 @@ h1 {
     left: 3px; top: 2.5px;
     height: 19px; width: 19px;
     border-radius: 50%;
-    background-color: #fff;
+    background-color: var(--bg);
     transition: 0.4s;
 }
 
@@ -97,8 +144,8 @@ h1 {
 }
 
 .main__card {
-    background-color: var(--very-pale-blue);
-    color: var(--dark-grayish-blue);
+    background-color: var(--card-bg);
+    color: var(--text);
     position: relative;
     text-align: center;
     border: none;
@@ -122,11 +169,6 @@ h1 {
 
 /* ----------------------------------------------- */
 
-h2 { 
-    color: black;
-    margin-top: 25px;
-    font-size: 4em; }
-
 .main__card p {
     text-transform: uppercase;
     letter-spacing: 4px;
@@ -142,8 +184,8 @@ h2 {
 
 .main__card:hover, 
 .small__card:hover { 
-    cursor: pointer;
-    background-color: var(--light-grayish-blue); }
+    filter: var(--hover);
+    cursor: pointer; }
 
 /* Small Cards */
 .small__card__container {
@@ -155,7 +197,7 @@ h2 {
 }
 
 .small__card {
-    background-color: var(--very-pale-blue);
+    background-color: var(--card-bg);
     border-radius: 5px;
     padding: 25px;
 }
@@ -173,7 +215,7 @@ h2 {
 
 .small__card__inner:last-of-type { margin-bottom: 0; }
 .small__card__inner p { 
-    color: var(--dark-grayish-blue);
+    color: var(--text);
     font-weight: 700; }
 
 h3 { font-size: 2em; }
@@ -205,7 +247,6 @@ h3 { font-size: 2em; }
         justify-content: space-between;
     }
 
-  
     .navbar,
     .main__card__container,
     .small__card__container {
