@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Inter:400,700&display=swap');
 
 :root {
-    --lime-green: hsl(163, 72%, 41%);
-    --bright-red: hsl(356, 69%, 56%);
     /* Dark Theme */
     --very-dark-blue: hsl(230, 17%, 14%);
     --dark-blue: hsl(232, 19%, 15%);
@@ -85,8 +83,8 @@ h2 {
 
 h2, h3 { color: var(--data-numbers); }
 
-.positive { color: var(--lime-green); }
-.negative { color: var(--bright-red); }
+.positive { color: hsl(163, 72%, 41%); }
+.negative { color: hsl(356, 69%, 56%); }
 .universal_padding { padding: 0 50px; }
 
 /* Navbar */
